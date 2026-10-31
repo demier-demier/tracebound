@@ -463,7 +463,7 @@ class Workspace:
                 if verification.returncode != 0:
                     raise WorkspaceError(422, "Rust certificate verification failed; no analysis was stored")
                 result = strict_json(verification.stdout)
-                if result.get("verified") is not True or result.get("solver_recomputed") is not False:
+                if type(result) is not dict or result.get("verified") is not True or result.get("solver_recomputed") is not False:
                     raise WorkspaceError(422, "Rust CLI did not confirm solver-free certificate verification")
                 report.decode("utf-8")
                 return report
