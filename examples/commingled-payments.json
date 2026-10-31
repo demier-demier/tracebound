@@ -1,0 +1,162 @@
+{
+  "schema": "flow-case/v1",
+  "case_id": "commingled-payments",
+  "currency": "EUR",
+  "completeness_attested": true,
+  "opening_balances": [
+    {
+      "account": "reserve",
+      "amount_minor": 1000000
+    },
+    {
+      "account": "clean-income",
+      "amount_minor": 600000
+    },
+    {
+      "account": "payment-desk",
+      "amount_minor": 250000
+    },
+    {
+      "account": "invoice-a",
+      "amount_minor": 0
+    },
+    {
+      "account": "invoice-b",
+      "amount_minor": 0
+    },
+    {
+      "account": "settlement",
+      "amount_minor": 0
+    },
+    {
+      "account": "treasury",
+      "amount_minor": 0
+    }
+  ],
+  "closing_balances": [
+    {
+      "account": "reserve",
+      "amount_minor": 600000
+    },
+    {
+      "account": "clean-income",
+      "amount_minor": 250000
+    },
+    {
+      "account": "payment-desk",
+      "amount_minor": 50000
+    },
+    {
+      "account": "invoice-a",
+      "amount_minor": 50000
+    },
+    {
+      "account": "invoice-b",
+      "amount_minor": 150000
+    },
+    {
+      "account": "settlement",
+      "amount_minor": 150000
+    },
+    {
+      "account": "treasury",
+      "amount_minor": 600000
+    }
+  ],
+  "transfers": [
+    {
+      "id": "commingled-payments-01",
+      "timestamp": "2026-01-15T09:05:00Z",
+      "sequence": 1,
+      "from_account": "clean-income",
+      "to_account": "payment-desk",
+      "amount_minor": 250000
+    },
+    {
+      "id": "commingled-payments-02",
+      "timestamp": "2026-01-15T09:10:00Z",
+      "sequence": 2,
+      "from_account": "reserve",
+      "to_account": "payment-desk",
+      "amount_minor": 500000
+    },
+    {
+      "id": "commingled-payments-03",
+      "timestamp": "2026-01-15T09:15:00Z",
+      "sequence": 3,
+      "from_account": "payment-desk",
+      "to_account": "invoice-a",
+      "amount_minor": 400000
+    },
+    {
+      "id": "commingled-payments-04",
+      "timestamp": "2026-01-15T09:20:00Z",
+      "sequence": 4,
+      "from_account": "payment-desk",
+      "to_account": "invoice-b",
+      "amount_minor": 350000
+    },
+    {
+      "id": "commingled-payments-05",
+      "timestamp": "2026-01-15T09:25:00Z",
+      "sequence": 5,
+      "from_account": "payment-desk",
+      "to_account": "treasury",
+      "amount_minor": 200000
+    },
+    {
+      "id": "commingled-payments-06",
+      "timestamp": "2026-01-15T09:30:00Z",
+      "sequence": 6,
+      "from_account": "invoice-a",
+      "to_account": "settlement",
+      "amount_minor": 350000
+    },
+    {
+      "id": "commingled-payments-07",
+      "timestamp": "2026-01-15T09:35:00Z",
+      "sequence": 7,
+      "from_account": "invoice-b",
+      "to_account": "settlement",
+      "amount_minor": 300000
+    },
+    {
+      "id": "commingled-payments-08",
+      "timestamp": "2026-01-15T09:40:00Z",
+      "sequence": 8,
+      "from_account": "settlement",
+      "to_account": "treasury",
+      "amount_minor": 500000
+    },
+    {
+      "id": "commingled-payments-09",
+      "timestamp": "2026-01-15T09:45:00Z",
+      "sequence": 9,
+      "from_account": "treasury",
+      "to_account": "reserve",
+      "amount_minor": 100000
+    },
+    {
+      "id": "commingled-payments-10",
+      "timestamp": "2026-01-15T09:50:00Z",
+      "sequence": 10,
+      "from_account": "clean-income",
+      "to_account": "treasury",
+      "amount_minor": 100000
+    },
+    {
+      "id": "commingled-payments-11",
+      "timestamp": "2026-01-15T09:55:00Z",
+      "sequence": 11,
+      "from_account": "treasury",
+      "to_account": "invoice-b",
+      "amount_minor": 100000
+    }
+  ],
+  "seed_transfer_id": "commingled-payments-02",
+  "target_transfer_ids": [
+    "commingled-payments-03",
+    "commingled-payments-08",
+    "commingled-payments-09"
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "schema": "flow-case/v1",
+  "case_id": "treasury-sweep",
+  "currency": "EUR",
+  "completeness_attested": true,
+  "opening_balances": [
+    {
+      "account": "treasury",
+      "amount_minor": 2000000
+    },
+    {
+      "account": "desk-a",
+      "amount_minor": 400000
+    },
+    {
+      "account": "desk-b",
+      "amount_minor": 300000
+    },
+    {
+      "account": "desk-c",
+      "amount_minor": 300000
+    },
+    {
+      "account": "clearing",
+      "amount_minor": 0
+    },
+    {
+      "account": "reserve",
+      "amount_minor": 0
+    },
+    {
+      "account": "operations",
+      "amount_minor": 500000
+    }
+  ],
+  "closing_balances": [
+    {
+      "account": "treasury",
+      "amount_minor": 1700000
+    },
+    {
+      "account": "desk-a",
+      "amount_minor": 300000
+    },
+    {
+      "account": "desk-b",
+      "amount_minor": 50000
+    },
+    {
+      "account": "desk-c",
+      "amount_minor": 50000
+    },
+    {
+      "account": "clearing",
+      "amount_minor": 100000
+    },
+    {
+      "account": "reserve",
+      "amount_minor": 500000
+    },
+    {
+      "account": "operations",
+      "amount_minor": 800000
+    }
+  ],
+  "transfers": [
+    {
+      "id": "treasury-sweep-01",
+      "timestamp": "2026-01-15T09:05:00Z",
+      "sequence": 1,
+      "from_account": "treasury",
+      "to_account": "desk-a",
+      "amount_minor": 500000
+    },
+    {
+      "id": "treasury-sweep-02",
+      "timestamp": "2026-01-15T09:10:00Z",
+      "sequence": 2,
+      "from_account": "desk-b",
+      "to_account": "clearing",
+      "amount_minor": 250000
+    },
+    {
+      "id": "treasury-sweep-03",
+      "timestamp": "2026-01-15T09:15:00Z",
+      "sequence": 3,
+      "from_account": "desk-c",
+      "to_account": "clearing",
+      "amount_minor": 250000
+    },
+    {
+      "id": "treasury-sweep-04",
+      "timestamp": "2026-01-15T09:20:00Z",
+      "sequence": 4,
+      "from_account": "desk-a",
+      "to_account": "clearing",
+      "amount_minor": 700000
+    },
+    {
+      "id": "treasury-sweep-05",
+      "timestamp": "2026-01-15T09:25:00Z",
+      "sequence": 5,
+      "from_account": "clearing",
+      "to_account": "reserve",
+      "amount_minor": 1000000
+    },
+    {
+      "id": "treasury-sweep-06",
+      "timestamp": "2026-01-15T09:30:00Z",
+      "sequence": 6,
+      "from_account": "reserve",
+      "to_account": "treasury",
+      "amount_minor": 400000
+    },
+    {
+      "id": "treasury-sweep-07",
+      "timestamp": "2026-01-15T09:35:00Z",
+      "sequence": 7,
+      "from_account": "treasury",
+      "to_account": "operations",
+      "amount_minor": 300000
+    },
+    {
+      "id": "treasury-sweep-08",
+      "timestamp": "2026-01-15T09:40:00Z",
+      "sequence": 8,
+      "from_account": "operations",
+      "to_account": "desk-a",
+      "amount_minor": 200000
+    },
+    {
+      "id": "treasury-sweep-09",
+      "timestamp": "2026-01-15T09:45:00Z",
+      "sequence": 9,
+      "from_account": "reserve",
+      "to_account": "operations",
+      "amount_minor": 200000
+    },
+    {
+      "id": "treasury-sweep-10",
+      "timestamp": "2026-01-15T09:50:00Z",
+      "sequence": 10,
+      "from_account": "desk-a",
+      "to_account": "clearing",
+      "amount_minor": 100000
+    },
+    {
+      "id": "treasury-sweep-11",
+      "timestamp": "2026-01-15T09:55:00Z",
+      "sequence": 11,
+      "from_account": "clearing",
+      "to_account": "reserve",
+      "amount_minor": 200000
+    },
+    {
+      "id": "treasury-sweep-12",
+      "timestamp": "2026-01-15T10:00:00Z",
+      "sequence": 12,
+      "from_account": "reserve",
+      "to_account": "treasury",
+      "amount_minor": 100000
+    }
+  ],
+  "seed_transfer_id": "treasury-sweep-01",
+  "target_transfer_ids": [
+    "treasury-sweep-05",
+    "treasury-sweep-07",
+    "treasury-sweep-11"
+  ]
+}

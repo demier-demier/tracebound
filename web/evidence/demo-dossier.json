@@ -1,0 +1,321 @@
+{
+  "analyses": [
+    {
+      "actor": "investigator-1",
+      "created_at": "2026-10-31T22:13:21.565857Z",
+      "id": "53bc29f1a36dd7b8088960dc8e34b363",
+      "input_artifact_id": "e40df2686b63782b21c35a955a6abd8f",
+      "report_artifact_id": "dc1fdf24298a3a89a77fa83b16438bc4",
+      "revision": 2
+    }
+  ],
+  "anchor": {
+    "case_id": "TB-001",
+    "event_hash": "9abcfc358d660811f43e0dba98125e92ae3ae6a7305a403629d97abacf38b952",
+    "revision": 8
+  },
+  "artifacts": [
+    {
+      "byte_length": 2504,
+      "content": "{\n  \"schema\": \"flow-case/v1\",\n  \"case_id\": \"split-payment-review\",\n  \"currency\": \"EUR\",\n  \"completeness_attested\": true,\n  \"opening_balances\": [\n    {\n      \"account\": \"origin\",\n      \"amount_minor\": 900000\n    },\n    {\n      \"account\": \"payment-desk\",\n      \"amount_minor\": 100000\n    },\n    {\n      \"account\": \"invoice-a\",\n      \"amount_minor\": 50000\n    },\n    {\n      \"account\": \"invoice-b\",\n      \"amount_minor\": 0\n    },\n    {\n      \"account\": \"settlement\",\n      \"amount_minor\": 100000\n    },\n    {\n      \"account\": \"recipient\",\n      \"amount_minor\": 0\n    }\n  ],\n  \"closing_balances\": [\n    {\n      \"account\": \"origin\",\n      \"amount_minor\": 0\n    },\n    {\n      \"account\": \"payment-desk\",\n      \"amount_minor\": 100000\n    },\n    {\n      \"account\": \"invoice-a\",\n      \"amount_minor\": 100000\n    },\n    {\n      \"account\": \"invoice-b\",\n      \"amount_minor\": 0\n    },\n    {\n      \"account\": \"settlement\",\n      \"amount_minor\": 250000\n    },\n    {\n      \"account\": \"recipient\",\n      \"amount_minor\": 700000\n    }\n  ],\n  \"transfers\": [\n    {\n      \"id\": \"split-payment-review-01\",\n      \"timestamp\": \"2026-01-15T09:05:00Z\",\n      \"sequence\": 1,\n      \"from_account\": \"origin\",\n      \"to_account\": \"payment-desk\",\n      \"amount_minor\": 900000\n    },\n    {\n      \"id\": \"split-payment-review-02\",\n      \"timestamp\": \"2026-01-15T09:10:00Z\",\n      \"sequence\": 2,\n      \"from_account\": \"payment-desk\",\n      \"to_account\": \"invoice-a\",\n      \"amount_minor\": 600000\n    },\n    {\n      \"id\": \"split-payment-review-03\",\n      \"timestamp\": \"2026-01-15T09:15:00Z\",\n      \"sequence\": 3,\n      \"from_account\": \"payment-desk\",\n      \"to_account\": \"invoice-b\",\n      \"amount_minor\": 300000\n    },\n    {\n      \"id\": \"split-payment-review-04\",\n      \"timestamp\": \"2026-01-15T09:20:00Z\",\n      \"sequence\": 4,\n      \"from_account\": \"invoice-a\",\n      \"to_account\": \"settlement\",\n      \"amount_minor\": 550000\n    },\n    {\n      \"id\": \"split-payment-review-05\",\n      \"timestamp\": \"2026-01-15T09:25:00Z\",\n      \"sequence\": 5,\n      \"from_account\": \"invoice-b\",\n      \"to_account\": \"settlement\",\n      \"amount_minor\": 300000\n    },\n    {\n      \"id\": \"split-payment-review-06\",\n      \"timestamp\": \"2026-01-15T09:30:00Z\",\n      \"sequence\": 6,\n      \"from_account\": \"settlement\",\n      \"to_account\": \"recipient\",\n      \"amount_minor\": 700000\n    }\n  ],\n  \"seed_transfer_id\": \"split-payment-review-01\",\n  \"target_transfer_ids\": [\n    \"split-payment-review-06\",\n    \"split-payment-review-02\",\n    \"split-payment-review-04\"\n  ]\n}\n",
+      "created_at": "2026-10-31T22:13:21.565857Z",
+      "id": "e40df2686b63782b21c35a955a6abd8f",
+      "kind": "input",
+      "sha256": "6c2811c952f3d6da4e5da33daaa90609c5c061077ad2bef21c1e18e181529406"
+    },
+    {
+      "byte_length": 13193,
+      "content": "{\n  \"schema\": \"flow-attribution/v1\",\n  \"input_sha256\": \"6c2811c952f3d6da4e5da33daaa90609c5c061077ad2bef21c1e18e181529406\",\n  \"case_id\": \"split-payment-review\",\n  \"currency\": \"EUR\",\n  \"policy\": {\n    \"model\": \"Temporal capacity flow with exact residual-circulation edge bounds\",\n    \"max_input_bytes\": 2097152,\n    \"max_transfers\": 1000,\n    \"max_accounts\": 128,\n    \"max_targets\": 16,\n    \"max_work_units\": 20000000,\n    \"max_report_bytes\": 16777216,\n    \"work_unit_definition\": \"One residual edge inspection/augmentation, cut edge check, original-edge conservation check or witness record/account replay; input and graph sizes are separately bounded.\"\n  },\n  \"assumptions\": [\n    \"Bounds are conditional mathematical allocations, not evidence of actual fund provenance, criminal origin, ownership or legal liability.\",\n    \"All accounts have explicit opening and closing balances; every debit is funded and closing balances reconcile. Completeness is attested by the submitter and cannot be proven from this file alone.\",\n    \"The entire selected seed transfer is labelled at the recipient immediately after credit. Earlier transfers carry zero label, and the seed transfer itself carries its full amount by definition.\",\n    \"A single syntactically valid currency is used. Amounts are nonnegative integer minor units, with no FX, reversals, self-transfers, credit facilities, external deposits or omitted fees.\",\n    \"Positive unique sequence numbers establish event order, including tied timestamps. Timestamps must be nondecreasing in sequence order; arrays may be supplied in any order.\",\n    \"Each target minimum and maximum is tight independently and has a complete feasible witness. Bounds for different targets, or both endpoints of one target, need not be simultaneously attainable.\",\n    \"Any mixing allocation satisfying temporal capacity and conservation is allowed. FIFO, proportional mixing and account-wide reachability are not assumed to establish truth.\",\n    \"Certificate verification checks metadata, structural statistics, feasible witnesses and exact bounds without running the solver. The reported solver work count is informational and is not independently reproduced by certificate verification.\",\n    \"All monetary report fields are exact decimal strings. Exceeded work or size limits return an error rather than approximate or partial bounds.\"\n  ],\n  \"seed\": {\n    \"transfer_id\": \"split-payment-review-01\",\n    \"sequence\": 1,\n    \"recipient\": \"payment-desk\",\n    \"amount_minor\": \"900000\"\n  },\n  \"ledger\": {\n    \"completeness_attested\": true,\n    \"closing_balances_reconciled\": true,\n    \"transfer_count\": 6,\n    \"opening_total_minor\": \"1150000\",\n    \"closing_total_minor\": \"1150000\",\n    \"accounts\": [\n      {\n        \"account\": \"invoice-a\",\n        \"opening_minor\": \"50000\",\n        \"closing_minor\": \"100000\"\n      },\n      {\n        \"account\": \"invoice-b\",\n        \"opening_minor\": \"0\",\n        \"closing_minor\": \"0\"\n      },\n      {\n        \"account\": \"origin\",\n        \"opening_minor\": \"900000\",\n        \"closing_minor\": \"0\"\n      },\n      {\n        \"account\": \"payment-desk\",\n        \"opening_minor\": \"100000\",\n        \"closing_minor\": \"100000\"\n      },\n      {\n        \"account\": \"recipient\",\n        \"opening_minor\": \"0\",\n        \"closing_minor\": \"700000\"\n      },\n      {\n        \"account\": \"settlement\",\n        \"opening_minor\": \"100000\",\n        \"closing_minor\": \"250000\"\n      }\n    ]\n  },\n  \"stats\": {\n    \"nodes\": 18,\n    \"capacity_edges\": 22,\n    \"suffix_transfers\": 5,\n    \"work_units\": 720,\n    \"witnesses_validated\": 6\n  },\n  \"targets\": [\n    {\n      \"transfer_id\": \"split-payment-review-02\",\n      \"sequence\": 2,\n      \"amount_minor\": \"600000\",\n      \"minimum_minor\": \"500000\",\n      \"maximum_minor\": \"600000\",\n      \"min_witness\": {\n        \"transfer_allocations\": [\n          {\n            \"transfer_id\": \"split-payment-review-01\",\n            \"seeded_minor\": \"900000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-02\",\n            \"seeded_minor\": \"500000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-03\",\n            \"seeded_minor\": \"300000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-04\",\n            \"seeded_minor\": \"400000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-05\",\n            \"seeded_minor\": \"300000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-06\",\n            \"seeded_minor\": \"450000\"\n          }\n        ],\n        \"final_allocations\": [\n          {\n            \"account\": \"invoice-a\",\n            \"seeded_minor\": \"100000\"\n          },\n          {\n            \"account\": \"invoice-b\",\n            \"seeded_minor\": \"0\"\n          },\n          {\n            \"account\": \"origin\",\n            \"seeded_minor\": \"0\"\n          },\n          {\n            \"account\": \"payment-desk\",\n            \"seeded_minor\": \"100000\"\n          },\n          {\n            \"account\": \"recipient\",\n            \"seeded_minor\": \"450000\"\n          },\n          {\n            \"account\": \"settlement\",\n            \"seeded_minor\": \"250000\"\n          }\n        ]\n      },\n      \"max_witness\": {\n        \"transfer_allocations\": [\n          {\n            \"transfer_id\": \"split-payment-review-01\",\n            \"seeded_minor\": \"900000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-02\",\n            \"seeded_minor\": \"600000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-03\",\n            \"seeded_minor\": \"200000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-04\",\n            \"seeded_minor\": \"500000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-05\",\n            \"seeded_minor\": \"200000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-06\",\n            \"seeded_minor\": \"450000\"\n          }\n        ],\n        \"final_allocations\": [\n          {\n            \"account\": \"invoice-a\",\n            \"seeded_minor\": \"100000\"\n          },\n          {\n            \"account\": \"invoice-b\",\n            \"seeded_minor\": \"0\"\n          },\n          {\n            \"account\": \"origin\",\n            \"seeded_minor\": \"0\"\n          },\n          {\n            \"account\": \"payment-desk\",\n            \"seeded_minor\": \"100000\"\n          },\n          {\n            \"account\": \"recipient\",\n            \"seeded_minor\": \"450000\"\n          },\n          {\n            \"account\": \"settlement\",\n            \"seeded_minor\": \"250000\"\n          }\n        ]\n      },\n      \"min_certificate\": {\n        \"kind\": \"residual_cut\",\n        \"reachable_nodes\": [\n          3,\n          6\n        ]\n      },\n      \"max_certificate\": {\n        \"kind\": \"transfer_capacity_upper_bound\"\n      }\n    },\n    {\n      \"transfer_id\": \"split-payment-review-04\",\n      \"sequence\": 4,\n      \"amount_minor\": \"550000\",\n      \"minimum_minor\": \"400000\",\n      \"maximum_minor\": \"550000\",\n      \"min_witness\": {\n        \"transfer_allocations\": [\n          {\n            \"transfer_id\": \"split-payment-review-01\",\n            \"seeded_minor\": \"900000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-02\",\n            \"seeded_minor\": \"500000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-03\",\n            \"seeded_minor\": \"300000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-04\",\n            \"seeded_minor\": \"400000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-05\",\n            \"seeded_minor\": \"300000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-06\",\n            \"seeded_minor\": \"450000\"\n          }\n        ],\n        \"final_allocations\": [\n          {\n            \"account\": \"invoice-a\",\n            \"seeded_minor\": \"100000\"\n          },\n          {\n            \"account\": \"invoice-b\",\n            \"seeded_minor\": \"0\"\n          },\n          {\n            \"account\": \"origin\",\n            \"seeded_minor\": \"0\"\n          },\n          {\n            \"account\": \"payment-desk\",\n            \"seeded_minor\": \"100000\"\n          },\n          {\n            \"account\": \"recipient\",\n            \"seeded_minor\": \"450000\"\n          },\n          {\n            \"account\": \"settlement\",\n            \"seeded_minor\": \"250000\"\n          }\n        ]\n      },\n      \"max_witness\": {\n        \"transfer_allocations\": [\n          {\n            \"transfer_id\": \"split-payment-review-01\",\n            \"seeded_minor\": \"900000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-02\",\n            \"seeded_minor\": \"600000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-03\",\n            \"seeded_minor\": \"200000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-04\",\n            \"seeded_minor\": \"550000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-05\",\n            \"seeded_minor\": \"200000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-06\",\n            \"seeded_minor\": \"500000\"\n          }\n        ],\n        \"final_allocations\": [\n          {\n            \"account\": \"invoice-a\",\n            \"seeded_minor\": \"50000\"\n          },\n          {\n            \"account\": \"invoice-b\",\n            \"seeded_minor\": \"0\"\n          },\n          {\n            \"account\": \"origin\",\n            \"seeded_minor\": \"0\"\n          },\n          {\n            \"account\": \"payment-desk\",\n            \"seeded_minor\": \"100000\"\n          },\n          {\n            \"account\": \"recipient\",\n            \"seeded_minor\": \"500000\"\n          },\n          {\n            \"account\": \"settlement\",\n            \"seeded_minor\": \"250000\"\n          }\n        ]\n      },\n      \"min_certificate\": {\n        \"kind\": \"residual_cut\",\n        \"reachable_nodes\": [\n          3,\n          6,\n          9\n        ]\n      },\n      \"max_certificate\": {\n        \"kind\": \"transfer_capacity_upper_bound\"\n      }\n    },\n    {\n      \"transfer_id\": \"split-payment-review-06\",\n      \"sequence\": 6,\n      \"amount_minor\": \"700000\",\n      \"minimum_minor\": \"450000\",\n      \"maximum_minor\": \"700000\",\n      \"min_witness\": {\n        \"transfer_allocations\": [\n          {\n            \"transfer_id\": \"split-payment-review-01\",\n            \"seeded_minor\": \"900000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-02\",\n            \"seeded_minor\": \"500000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-03\",\n            \"seeded_minor\": \"300000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-04\",\n            \"seeded_minor\": \"400000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-05\",\n            \"seeded_minor\": \"300000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-06\",\n            \"seeded_minor\": \"450000\"\n          }\n        ],\n        \"final_allocations\": [\n          {\n            \"account\": \"invoice-a\",\n            \"seeded_minor\": \"100000\"\n          },\n          {\n            \"account\": \"invoice-b\",\n            \"seeded_minor\": \"0\"\n          },\n          {\n            \"account\": \"origin\",\n            \"seeded_minor\": \"0\"\n          },\n          {\n            \"account\": \"payment-desk\",\n            \"seeded_minor\": \"100000\"\n          },\n          {\n            \"account\": \"recipient\",\n            \"seeded_minor\": \"450000\"\n          },\n          {\n            \"account\": \"settlement\",\n            \"seeded_minor\": \"250000\"\n          }\n        ]\n      },\n      \"max_witness\": {\n        \"transfer_allocations\": [\n          {\n            \"transfer_id\": \"split-payment-review-01\",\n            \"seeded_minor\": \"900000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-02\",\n            \"seeded_minor\": \"500000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-03\",\n            \"seeded_minor\": \"300000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-04\",\n            \"seeded_minor\": \"400000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-05\",\n            \"seeded_minor\": \"300000\"\n          },\n          {\n            \"transfer_id\": \"split-payment-review-06\",\n            \"seeded_minor\": \"700000\"\n          }\n        ],\n        \"final_allocations\": [\n          {\n            \"account\": \"invoice-a\",\n            \"seeded_minor\": \"100000\"\n          },\n          {\n            \"account\": \"invoice-b\",\n            \"seeded_minor\": \"0\"\n          },\n          {\n            \"account\": \"origin\",\n            \"seeded_minor\": \"0\"\n          },\n          {\n            \"account\": \"payment-desk\",\n            \"seeded_minor\": \"100000\"\n          },\n          {\n            \"account\": \"recipient\",\n            \"seeded_minor\": \"700000\"\n          },\n          {\n            \"account\": \"settlement\",\n            \"seeded_minor\": \"0\"\n          }\n        ]\n      },\n      \"min_certificate\": {\n        \"kind\": \"residual_cut\",\n        \"reachable_nodes\": [\n          3,\n          6,\n          8,\n          9,\n          11,\n          13,\n          15\n        ]\n      },\n      \"max_certificate\": {\n        \"kind\": \"transfer_capacity_upper_bound\"\n      }\n    }\n  ]\n}\n",
+      "created_at": "2026-10-31T22:13:21.565857Z",
+      "id": "dc1fdf24298a3a89a77fa83b16438bc4",
+      "kind": "report",
+      "sha256": "c587cce3312933b0c16fa11f8d4541ec275426fd297eabd58d722c07978d7f2c"
+    }
+  ],
+  "case": {
+    "created_at": "2026-10-31T22:13:21.548108Z",
+    "current_analysis_id": "53bc29f1a36dd7b8088960dc8e34b363",
+    "description": "Original synthetic case: determine what a complete ledger supports about a marked EUR 9,000 payment after it mixes with other balances. Review alternatives before making a finding.",
+    "id": "TB-001",
+    "last_investigator": "investigator-1",
+    "revision": 8,
+    "status": "approved",
+    "title": "Following a split EUR 9,000 payment",
+    "updated_at": "2026-10-31T22:13:21.586829Z"
+  },
+  "events": [
+    {
+      "action": "case_created",
+      "actor": "investigator-1",
+      "at": "2026-10-31T22:13:21.548108Z",
+      "case_id": "TB-001",
+      "hash": "e48fd81216ef24affc11c56ce6d8bb67e5e656533b1b5c85bb603ff611974189",
+      "payload": {
+        "analysis": null,
+        "artifacts": [],
+        "case": {
+          "created_at": "2026-10-31T22:13:21.548108Z",
+          "current_analysis_id": null,
+          "description": "Original synthetic case: determine what a complete ledger supports about a marked EUR 9,000 payment after it mixes with other balances. Review alternatives before making a finding.",
+          "id": "TB-001",
+          "last_investigator": "investigator-1",
+          "revision": 1,
+          "status": "draft",
+          "title": "Following a split EUR 9,000 payment",
+          "updated_at": "2026-10-31T22:13:21.548108Z"
+        },
+        "note": null,
+        "review": null
+      },
+      "previous_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "role": "investigator",
+      "sequence": 1
+    },
+    {
+      "action": "analysis_committed",
+      "actor": "investigator-1",
+      "at": "2026-10-31T22:13:21.565857Z",
+      "case_id": "TB-001",
+      "hash": "57ce5c36c46f7adfe7b8562da6cefb74f7f3dba9d22cd05ec09c2f55bde70fcb",
+      "payload": {
+        "analysis": {
+          "actor": "investigator-1",
+          "created_at": "2026-10-31T22:13:21.565857Z",
+          "id": "53bc29f1a36dd7b8088960dc8e34b363",
+          "input_artifact_id": "e40df2686b63782b21c35a955a6abd8f",
+          "report_artifact_id": "dc1fdf24298a3a89a77fa83b16438bc4",
+          "revision": 2
+        },
+        "artifacts": [
+          {
+            "byte_length": 2504,
+            "created_at": "2026-10-31T22:13:21.565857Z",
+            "id": "e40df2686b63782b21c35a955a6abd8f",
+            "kind": "input",
+            "sha256": "6c2811c952f3d6da4e5da33daaa90609c5c061077ad2bef21c1e18e181529406"
+          },
+          {
+            "byte_length": 13193,
+            "created_at": "2026-10-31T22:13:21.565857Z",
+            "id": "dc1fdf24298a3a89a77fa83b16438bc4",
+            "kind": "report",
+            "sha256": "c587cce3312933b0c16fa11f8d4541ec275426fd297eabd58d722c07978d7f2c"
+          }
+        ],
+        "case": {
+          "created_at": "2026-10-31T22:13:21.548108Z",
+          "current_analysis_id": "53bc29f1a36dd7b8088960dc8e34b363",
+          "description": "Original synthetic case: determine what a complete ledger supports about a marked EUR 9,000 payment after it mixes with other balances. Review alternatives before making a finding.",
+          "id": "TB-001",
+          "last_investigator": "investigator-1",
+          "revision": 2,
+          "status": "draft",
+          "title": "Following a split EUR 9,000 payment",
+          "updated_at": "2026-10-31T22:13:21.565857Z"
+        },
+        "note": null,
+        "review": null
+      },
+      "previous_hash": "e48fd81216ef24affc11c56ce6d8bb67e5e656533b1b5c85bb603ff611974189",
+      "role": "investigator",
+      "sequence": 2
+    },
+    {
+      "action": "note_added",
+      "actor": "investigator-1",
+      "at": "2026-10-31T22:13:21.571212Z",
+      "case_id": "TB-001",
+      "hash": "1714b262b84179708d629aa8c4cfaeecdf2f637679130b9cba0b33517705ed50",
+      "payload": {
+        "analysis": null,
+        "artifacts": [],
+        "case": {
+          "created_at": "2026-10-31T22:13:21.548108Z",
+          "current_analysis_id": "53bc29f1a36dd7b8088960dc8e34b363",
+          "description": "Original synthetic case: determine what a complete ledger supports about a marked EUR 9,000 payment after it mixes with other balances. Review alternatives before making a finding.",
+          "id": "TB-001",
+          "last_investigator": "investigator-1",
+          "revision": 3,
+          "status": "draft",
+          "title": "Following a split EUR 9,000 payment",
+          "updated_at": "2026-10-31T22:13:21.571212Z"
+        },
+        "note": {
+          "actor": "investigator-1",
+          "created_at": "2026-10-31T22:13:21.571212Z",
+          "id": "35a22494b5380c6266f433e38f45f097",
+          "revision": 3,
+          "text": "Question: how much of the selected EUR 9,000 payment can be assigned to the final EUR 7,000 payout? The ledger records movements, but does not identify which fungible units funded each payment. The model assigns between EUR 4,500 and EUR 7,000 to the final payout. Compare the complete endpoint allocations; do not sum marginal maxima."
+        },
+        "review": null
+      },
+      "previous_hash": "57ce5c36c46f7adfe7b8562da6cefb74f7f3dba9d22cd05ec09c2f55bde70fcb",
+      "role": "investigator",
+      "sequence": 3
+    },
+    {
+      "action": "review_submitted",
+      "actor": "investigator-1",
+      "at": "2026-10-31T22:13:21.574326Z",
+      "case_id": "TB-001",
+      "hash": "badcb8425346f5427dfbf14140f9fd4e5cad9d8f613ac81a1c840d607c348f79",
+      "payload": {
+        "analysis": null,
+        "artifacts": [],
+        "case": {
+          "created_at": "2026-10-31T22:13:21.548108Z",
+          "current_analysis_id": "53bc29f1a36dd7b8088960dc8e34b363",
+          "description": "Original synthetic case: determine what a complete ledger supports about a marked EUR 9,000 payment after it mixes with other balances. Review alternatives before making a finding.",
+          "id": "TB-001",
+          "last_investigator": "investigator-1",
+          "revision": 4,
+          "status": "in_review",
+          "title": "Following a split EUR 9,000 payment",
+          "updated_at": "2026-10-31T22:13:21.574326Z"
+        },
+        "note": null,
+        "review": null
+      },
+      "previous_hash": "1714b262b84179708d629aa8c4cfaeecdf2f637679130b9cba0b33517705ed50",
+      "role": "investigator",
+      "sequence": 4
+    },
+    {
+      "action": "review_returned",
+      "actor": "reviewer-1",
+      "at": "2026-10-31T22:13:21.577311Z",
+      "case_id": "TB-001",
+      "hash": "276efaf51d5329a5182215f23899af709ca794b319e78efa0c5a37fa89124c26",
+      "payload": {
+        "analysis": null,
+        "artifacts": [],
+        "case": {
+          "created_at": "2026-10-31T22:13:21.548108Z",
+          "current_analysis_id": "53bc29f1a36dd7b8088960dc8e34b363",
+          "description": "Original synthetic case: determine what a complete ledger supports about a marked EUR 9,000 payment after it mixes with other balances. Review alternatives before making a finding.",
+          "id": "TB-001",
+          "last_investigator": "investigator-1",
+          "revision": 5,
+          "status": "draft",
+          "title": "Following a split EUR 9,000 payment",
+          "updated_at": "2026-10-31T22:13:21.577311Z"
+        },
+        "note": null,
+        "review": {
+          "decision": "return",
+          "reason": "Add the legitimate settlement explanation and identify evidence absent from this closed ledger. Mathematical attribution alone cannot establish why the payments occurred."
+        }
+      },
+      "previous_hash": "badcb8425346f5427dfbf14140f9fd4e5cad9d8f613ac81a1c840d607c348f79",
+      "role": "reviewer",
+      "sequence": 5
+    },
+    {
+      "action": "note_added",
+      "actor": "investigator-1",
+      "at": "2026-10-31T22:13:21.580733Z",
+      "case_id": "TB-001",
+      "hash": "8e2e1afb459f84cc173ad1e751bc4eec7a790b4006dac86c420a359095a4504e",
+      "payload": {
+        "analysis": null,
+        "artifacts": [],
+        "case": {
+          "created_at": "2026-10-31T22:13:21.548108Z",
+          "current_analysis_id": "53bc29f1a36dd7b8088960dc8e34b363",
+          "description": "Original synthetic case: determine what a complete ledger supports about a marked EUR 9,000 payment after it mixes with other balances. Review alternatives before making a finding.",
+          "id": "TB-001",
+          "last_investigator": "investigator-1",
+          "revision": 6,
+          "status": "draft",
+          "title": "Following a split EUR 9,000 payment",
+          "updated_at": "2026-10-31T22:13:21.580733Z"
+        },
+        "note": {
+          "actor": "investigator-1",
+          "created_at": "2026-10-31T22:13:21.580733Z",
+          "id": "af70e7ead84513d23458cc741b6450d4",
+          "revision": 6,
+          "text": "Competing explanation: the same transfers are compatible with ordinary invoice payments and treasury settlement. Missing external evidence includes invoice authenticity, beneficial ownership and business purpose. The reviewed finding is limited to exact allocation bounds under the supplied ledger; no criminal or tax conclusion is supported."
+        },
+        "review": null
+      },
+      "previous_hash": "276efaf51d5329a5182215f23899af709ca794b319e78efa0c5a37fa89124c26",
+      "role": "investigator",
+      "sequence": 6
+    },
+    {
+      "action": "review_submitted",
+      "actor": "investigator-1",
+      "at": "2026-10-31T22:13:21.583653Z",
+      "case_id": "TB-001",
+      "hash": "1146cef3bffb79a9ce810f3d747ea23f269d861e070c484134e4ba9c1eb7fd22",
+      "payload": {
+        "analysis": null,
+        "artifacts": [],
+        "case": {
+          "created_at": "2026-10-31T22:13:21.548108Z",
+          "current_analysis_id": "53bc29f1a36dd7b8088960dc8e34b363",
+          "description": "Original synthetic case: determine what a complete ledger supports about a marked EUR 9,000 payment after it mixes with other balances. Review alternatives before making a finding.",
+          "id": "TB-001",
+          "last_investigator": "investigator-1",
+          "revision": 7,
+          "status": "in_review",
+          "title": "Following a split EUR 9,000 payment",
+          "updated_at": "2026-10-31T22:13:21.583653Z"
+        },
+        "note": null,
+        "review": null
+      },
+      "previous_hash": "8e2e1afb459f84cc173ad1e751bc4eec7a790b4006dac86c420a359095a4504e",
+      "role": "investigator",
+      "sequence": 7
+    },
+    {
+      "action": "review_approved",
+      "actor": "reviewer-1",
+      "at": "2026-10-31T22:13:21.586829Z",
+      "case_id": "TB-001",
+      "hash": "9abcfc358d660811f43e0dba98125e92ae3ae6a7305a403629d97abacf38b952",
+      "payload": {
+        "analysis": null,
+        "artifacts": [],
+        "case": {
+          "created_at": "2026-10-31T22:13:21.548108Z",
+          "current_analysis_id": "53bc29f1a36dd7b8088960dc8e34b363",
+          "description": "Original synthetic case: determine what a complete ledger supports about a marked EUR 9,000 payment after it mixes with other balances. Review alternatives before making a finding.",
+          "id": "TB-001",
+          "last_investigator": "investigator-1",
+          "revision": 8,
+          "status": "approved",
+          "title": "Following a split EUR 9,000 payment",
+          "updated_at": "2026-10-31T22:13:21.586829Z"
+        },
+        "note": null,
+        "review": {
+          "decision": "approve",
+          "reason": "Approve this bounded analytical dossier: exact source retained, certificates verified, competing legitimate explanation recorded, and missing evidence explicit. This approves the documented analysis, not a finding of wrongdoing."
+        }
+      },
+      "previous_hash": "1146cef3bffb79a9ce810f3d747ea23f269d861e070c484134e4ba9c1eb7fd22",
+      "role": "reviewer",
+      "sequence": 8
+    }
+  ],
+  "notes": [
+    {
+      "actor": "investigator-1",
+      "created_at": "2026-10-31T22:13:21.571212Z",
+      "id": "35a22494b5380c6266f433e38f45f097",
+      "revision": 3,
+      "text": "Question: how much of the selected EUR 9,000 payment can be assigned to the final EUR 7,000 payout? The ledger records movements, but does not identify which fungible units funded each payment. The model assigns between EUR 4,500 and EUR 7,000 to the final payout. Compare the complete endpoint allocations; do not sum marginal maxima."
+    },
+    {
+      "actor": "investigator-1",
+      "created_at": "2026-10-31T22:13:21.580733Z",
+      "id": "af70e7ead84513d23458cc741b6450d4",
+      "revision": 6,
+      "text": "Competing explanation: the same transfers are compatible with ordinary invoice payments and treasury settlement. Missing external evidence includes invoice authenticity, beneficial ownership and business purpose. The reviewed finding is limited to exact allocation bounds under the supplied ledger; no criminal or tax conclusion is supported."
+    }
+  ],
+  "schema": "case-dossier/v1"
+}

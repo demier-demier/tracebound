@@ -1,0 +1,30 @@
+[package]
+name = "tracebound"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Conservation-constrained temporal flow bounds with independently verified witnesses"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+browser = ["dep:wasm-bindgen"]
+
+[dependencies]
+anyhow = "1"
+chrono = { version = "0.4", default-features = false, features = ["std"] }
+hex = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+wasm-bindgen = { version = "0.2", optional = true }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+clap = { version = "4", features = ["derive"] }
+tempfile = "3"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+

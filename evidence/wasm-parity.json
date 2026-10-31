@@ -1,0 +1,59 @@
+{
+  "schema": "tracebound-wasm-parity/v1",
+  "cases": [
+    {
+      "case": "commingled-payments.json",
+      "playback_snapshots_checked": 72,
+      "targets": 3,
+      "exact_native_wasm_parity": true,
+      "canonical_export_parity": true,
+      "forged_report_rejected": true,
+      "duplicate_input_key_rejected": true
+    },
+    {
+      "case": "seven-hop-bottleneck.json",
+      "playback_snapshots_checked": 66,
+      "targets": 3,
+      "exact_native_wasm_parity": true,
+      "canonical_export_parity": true,
+      "forged_report_rejected": true,
+      "duplicate_input_key_rejected": true
+    },
+    {
+      "case": "split-merge-cycle.json",
+      "playback_snapshots_checked": 120,
+      "targets": 4,
+      "exact_native_wasm_parity": true,
+      "canonical_export_parity": true,
+      "forged_report_rejected": true,
+      "duplicate_input_key_rejected": true
+    },
+    {
+      "case": "split-payment-review.json",
+      "playback_snapshots_checked": 42,
+      "targets": 3,
+      "exact_native_wasm_parity": true,
+      "canonical_export_parity": true,
+      "forged_report_rejected": true,
+      "duplicate_input_key_rejected": true
+    },
+    {
+      "case": "treasury-sweep.json",
+      "playback_snapshots_checked": 78,
+      "targets": 3,
+      "exact_native_wasm_parity": true,
+      "canonical_export_parity": true,
+      "forged_report_rejected": true,
+      "duplicate_input_key_rejected": true
+    },
+    {
+      "case": "unrelated-seed.json",
+      "playback_snapshots_checked": 66,
+      "targets": 3,
+      "exact_native_wasm_parity": true,
+      "canonical_export_parity": true,
+      "forged_report_rejected": true,
+      "duplicate_input_key_rejected": true
+    }
+  ]
+}

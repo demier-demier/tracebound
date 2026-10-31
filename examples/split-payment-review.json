@@ -1,0 +1,114 @@
+{
+  "schema": "flow-case/v1",
+  "case_id": "split-payment-review",
+  "currency": "EUR",
+  "completeness_attested": true,
+  "opening_balances": [
+    {
+      "account": "origin",
+      "amount_minor": 900000
+    },
+    {
+      "account": "payment-desk",
+      "amount_minor": 100000
+    },
+    {
+      "account": "invoice-a",
+      "amount_minor": 50000
+    },
+    {
+      "account": "invoice-b",
+      "amount_minor": 0
+    },
+    {
+      "account": "settlement",
+      "amount_minor": 100000
+    },
+    {
+      "account": "recipient",
+      "amount_minor": 0
+    }
+  ],
+  "closing_balances": [
+    {
+      "account": "origin",
+      "amount_minor": 0
+    },
+    {
+      "account": "payment-desk",
+      "amount_minor": 100000
+    },
+    {
+      "account": "invoice-a",
+      "amount_minor": 100000
+    },
+    {
+      "account": "invoice-b",
+      "amount_minor": 0
+    },
+    {
+      "account": "settlement",
+      "amount_minor": 250000
+    },
+    {
+      "account": "recipient",
+      "amount_minor": 700000
+    }
+  ],
+  "transfers": [
+    {
+      "id": "split-payment-review-01",
+      "timestamp": "2026-01-15T09:05:00Z",
+      "sequence": 1,
+      "from_account": "origin",
+      "to_account": "payment-desk",
+      "amount_minor": 900000
+    },
+    {
+      "id": "split-payment-review-02",
+      "timestamp": "2026-01-15T09:10:00Z",
+      "sequence": 2,
+      "from_account": "payment-desk",
+      "to_account": "invoice-a",
+      "amount_minor": 600000
+    },
+    {
+      "id": "split-payment-review-03",
+      "timestamp": "2026-01-15T09:15:00Z",
+      "sequence": 3,
+      "from_account": "payment-desk",
+      "to_account": "invoice-b",
+      "amount_minor": 300000
+    },
+    {
+      "id": "split-payment-review-04",
+      "timestamp": "2026-01-15T09:20:00Z",
+      "sequence": 4,
+      "from_account": "invoice-a",
+      "to_account": "settlement",
+      "amount_minor": 550000
+    },
+    {
+      "id": "split-payment-review-05",
+      "timestamp": "2026-01-15T09:25:00Z",
+      "sequence": 5,
+      "from_account": "invoice-b",
+      "to_account": "settlement",
+      "amount_minor": 300000
+    },
+    {
+      "id": "split-payment-review-06",
+      "timestamp": "2026-01-15T09:30:00Z",
+      "sequence": 6,
+      "from_account": "settlement",
+      "to_account": "recipient",
+      "amount_minor": 700000
+    }
+  ],
+  "seed_transfer_id": "split-payment-review-01",
+  "target_transfer_ids": [
+    "split-payment-review-06",
+    "split-payment-review-02",
+    "split-payment-review-04"
+  ]
+}

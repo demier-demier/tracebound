@@ -1,0 +1,12 @@
+id,timestamp,sequence,from_account,to_account,amount_minor,currency
+commingled-payments-01,2026-01-15T09:05:00Z,1,clean-income,payment-desk,250000,EUR
+commingled-payments-02,2026-01-15T09:10:00Z,2,reserve,payment-desk,500000,EUR
+commingled-payments-03,2026-01-15T09:15:00Z,3,payment-desk,invoice-a,400000,EUR
+commingled-payments-04,2026-01-15T09:20:00Z,4,payment-desk,invoice-b,350000,EUR
+commingled-payments-05,2026-01-15T09:25:00Z,5,payment-desk,treasury,200000,EUR
+commingled-payments-06,2026-01-15T09:30:00Z,6,invoice-a,settlement,350000,EUR
+commingled-payments-07,2026-01-15T09:35:00Z,7,invoice-b,settlement,300000,EUR
+commingled-payments-08,2026-01-15T09:40:00Z,8,settlement,treasury,500000,EUR
+commingled-payments-09,2026-01-15T09:45:00Z,9,treasury,reserve,100000,EUR
+commingled-payments-10,2026-01-15T09:50:00Z,10,clean-income,treasury,100000,EUR
+commingled-payments-11,2026-01-15T09:55:00Z,11,treasury,invoice-b,100000,EUR

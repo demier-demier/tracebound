@@ -1,0 +1,8 @@
+account,opening_minor,closing_minor
+reserve,1000000,600000
+clean-income,600000,250000
+payment-desk,250000,50000
+invoice-a,0,50000
+invoice-b,0,150000
+settlement,0,150000
+treasury,0,600000

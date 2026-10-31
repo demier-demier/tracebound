@@ -1,0 +1,1 @@
+{"name":"tracebound-workbench","private":true,"type":"module","scripts":{"build:web":"python3 scripts/build_web.py"}}

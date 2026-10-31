@@ -1,0 +1,89 @@
+{
+  "schema": "tracebound-workspace-observed/v1",
+  "case_id": "TB-001",
+  "status": "approved",
+  "revision": 8,
+  "events": 8,
+  "artifacts": 2,
+  "notes": 2,
+  "anchor": {
+    "case_id": "TB-001",
+    "event_hash": "9abcfc358d660811f43e0dba98125e92ae3ae6a7305a403629d97abacf38b952",
+    "revision": 8
+  },
+  "dossier_sha256": "e57c026597796c1746c65b227249630f15c8e4b48d2028d51168c815d73c28dd",
+  "persistence_reopen_identical": true,
+  "http_observations": [
+    {
+      "role": "investigator",
+      "route": "/cases",
+      "status": 201
+    },
+    {
+      "role": "investigator",
+      "route": "/cases/TB-001/analysis",
+      "status": 200
+    },
+    {
+      "role": "investigator",
+      "route": "/cases/TB-001/notes",
+      "status": 409
+    },
+    {
+      "role": "investigator",
+      "route": "/cases/TB-001/notes",
+      "status": 200
+    },
+    {
+      "role": "investigator",
+      "route": "/cases/TB-001/submit",
+      "status": 200
+    },
+    {
+      "role": "investigator",
+      "route": "/cases/TB-001/review",
+      "status": 403
+    },
+    {
+      "role": "reviewer",
+      "route": "/cases/TB-001/review",
+      "status": 200
+    },
+    {
+      "role": "investigator",
+      "route": "/cases/TB-001/notes",
+      "status": 200
+    },
+    {
+      "role": "investigator",
+      "route": "/cases/TB-001/submit",
+      "status": 200
+    },
+    {
+      "role": "reviewer",
+      "route": "/cases/TB-001/review",
+      "status": 200
+    },
+    {
+      "role": "auditor",
+      "route": "/cases/TB-001/notes",
+      "status": 403
+    },
+    {
+      "role": "investigator",
+      "route": "/cases/TB-001/notes",
+      "status": 409
+    },
+    {
+      "role": "auditor",
+      "route": "/cases/TB-001/dossier",
+      "status": 200
+    },
+    {
+      "role": "auditor",
+      "route": "/cases/TB-001/verify?anchor=9abcfc358d660811f43e0dba98125e92ae3ae6a7305a403629d97abacf38b952",
+      "status": 200
+    }
+  ],
+  "scope": "Actual loopback HTTP service, SQLite persistence, Rust analysis and certificate verification. Original synthetic ledger and scripted role-separated actors; no human case review or bank data is claimed."
+}

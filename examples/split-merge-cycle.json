@@ -1,0 +1,195 @@
+{
+  "schema": "flow-case/v1",
+  "case_id": "split-merge-cycle",
+  "currency": "EUR",
+  "completeness_attested": true,
+  "opening_balances": [
+    {
+      "account": "source",
+      "amount_minor": 1000000
+    },
+    {
+      "account": "mixer",
+      "amount_minor": 300000
+    },
+    {
+      "account": "left-branch",
+      "amount_minor": 100000
+    },
+    {
+      "account": "right-branch",
+      "amount_minor": 200000
+    },
+    {
+      "account": "merge",
+      "amount_minor": 0
+    },
+    {
+      "account": "vault",
+      "amount_minor": 0
+    },
+    {
+      "account": "merchant",
+      "amount_minor": 0
+    },
+    {
+      "account": "fees",
+      "amount_minor": 0
+    }
+  ],
+  "closing_balances": [
+    {
+      "account": "source",
+      "amount_minor": 400000
+    },
+    {
+      "account": "mixer",
+      "amount_minor": 0
+    },
+    {
+      "account": "left-branch",
+      "amount_minor": 10000
+    },
+    {
+      "account": "right-branch",
+      "amount_minor": 30000
+    },
+    {
+      "account": "merge",
+      "amount_minor": 50000
+    },
+    {
+      "account": "vault",
+      "amount_minor": 100000
+    },
+    {
+      "account": "merchant",
+      "amount_minor": 860000
+    },
+    {
+      "account": "fees",
+      "amount_minor": 150000
+    }
+  ],
+  "transfers": [
+    {
+      "id": "split-merge-cycle-01",
+      "timestamp": "2026-01-15T09:05:00Z",
+      "sequence": 1,
+      "from_account": "source",
+      "to_account": "mixer",
+      "amount_minor": 600000
+    },
+    {
+      "id": "split-merge-cycle-02",
+      "timestamp": "2026-01-15T09:10:00Z",
+      "sequence": 2,
+      "from_account": "mixer",
+      "to_account": "left-branch",
+      "amount_minor": 400000
+    },
+    {
+      "id": "split-merge-cycle-03",
+      "timestamp": "2026-01-15T09:15:00Z",
+      "sequence": 3,
+      "from_account": "mixer",
+      "to_account": "right-branch",
+      "amount_minor": 350000
+    },
+    {
+      "id": "split-merge-cycle-04",
+      "timestamp": "2026-01-15T09:20:00Z",
+      "sequence": 4,
+      "from_account": "left-branch",
+      "to_account": "merge",
+      "amount_minor": 450000
+    },
+    {
+      "id": "split-merge-cycle-05",
+      "timestamp": "2026-01-15T09:25:00Z",
+      "sequence": 5,
+      "from_account": "right-branch",
+      "to_account": "merge",
+      "amount_minor": 500000
+    },
+    {
+      "id": "split-merge-cycle-06",
+      "timestamp": "2026-01-15T09:30:00Z",
+      "sequence": 6,
+      "from_account": "merge",
+      "to_account": "vault",
+      "amount_minor": 800000
+    },
+    {
+      "id": "split-merge-cycle-07",
+      "timestamp": "2026-01-15T09:35:00Z",
+      "sequence": 7,
+      "from_account": "vault",
+      "to_account": "mixer",
+      "amount_minor": 200000
+    },
+    {
+      "id": "split-merge-cycle-08",
+      "timestamp": "2026-01-15T09:40:00Z",
+      "sequence": 8,
+      "from_account": "mixer",
+      "to_account": "merchant",
+      "amount_minor": 300000
+    },
+    {
+      "id": "split-merge-cycle-09",
+      "timestamp": "2026-01-15T09:45:00Z",
+      "sequence": 9,
+      "from_account": "merge",
+      "to_account": "fees",
+      "amount_minor": 100000
+    },
+    {
+      "id": "split-merge-cycle-10",
+      "timestamp": "2026-01-15T09:50:00Z",
+      "sequence": 10,
+      "from_account": "vault",
+      "to_account": "merchant",
+      "amount_minor": 500000
+    },
+    {
+      "id": "split-merge-cycle-11",
+      "timestamp": "2026-01-15T09:55:00Z",
+      "sequence": 11,
+      "from_account": "right-branch",
+      "to_account": "fees",
+      "amount_minor": 20000
+    },
+    {
+      "id": "split-merge-cycle-12",
+      "timestamp": "2026-01-15T10:00:00Z",
+      "sequence": 12,
+      "from_account": "left-branch",
+      "to_account": "fees",
+      "amount_minor": 30000
+    },
+    {
+      "id": "split-merge-cycle-13",
+      "timestamp": "2026-01-15T10:05:00Z",
+      "sequence": 13,
+      "from_account": "mixer",
+      "to_account": "left-branch",
+      "amount_minor": 50000
+    },
+    {
+      "id": "split-merge-cycle-14",
+      "timestamp": "2026-01-15T10:10:00Z",
+      "sequence": 14,
+      "from_account": "left-branch",
+      "to_account": "merchant",
+      "amount_minor": 60000
+    }
+  ],
+  "seed_transfer_id": "split-merge-cycle-01",
+  "target_transfer_ids": [
+    "split-merge-cycle-06",
+    "split-merge-cycle-08",
+    "split-merge-cycle-10",
+    "split-merge-cycle-14"
+  ]
+}

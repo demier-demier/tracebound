@@ -1,0 +1,162 @@
+{
+  "schema": "flow-case/v1",
+  "case_id": "unrelated-seed",
+  "currency": "EUR",
+  "completeness_attested": true,
+  "opening_balances": [
+    {
+      "account": "source",
+      "amount_minor": 1000000
+    },
+    {
+      "account": "seed-vault",
+      "amount_minor": 0
+    },
+    {
+      "account": "seed-sink",
+      "amount_minor": 0
+    },
+    {
+      "account": "operations",
+      "amount_minor": 1000000
+    },
+    {
+      "account": "payroll",
+      "amount_minor": 0
+    },
+    {
+      "account": "rent",
+      "amount_minor": 0
+    },
+    {
+      "account": "tax",
+      "amount_minor": 0
+    },
+    {
+      "account": "archive",
+      "amount_minor": 0
+    }
+  ],
+  "closing_balances": [
+    {
+      "account": "source",
+      "amount_minor": 300000
+    },
+    {
+      "account": "seed-vault",
+      "amount_minor": 250000
+    },
+    {
+      "account": "seed-sink",
+      "amount_minor": 250000
+    },
+    {
+      "account": "operations",
+      "amount_minor": 400000
+    },
+    {
+      "account": "payroll",
+      "amount_minor": 350000
+    },
+    {
+      "account": "rent",
+      "amount_minor": 150000
+    },
+    {
+      "account": "tax",
+      "amount_minor": 150000
+    },
+    {
+      "account": "archive",
+      "amount_minor": 150000
+    }
+  ],
+  "transfers": [
+    {
+      "id": "unrelated-seed-01",
+      "timestamp": "2026-01-15T09:05:00Z",
+      "sequence": 1,
+      "from_account": "source",
+      "to_account": "seed-vault",
+      "amount_minor": 500000
+    },
+    {
+      "id": "unrelated-seed-02",
+      "timestamp": "2026-01-15T09:10:00Z",
+      "sequence": 2,
+      "from_account": "operations",
+      "to_account": "payroll",
+      "amount_minor": 400000
+    },
+    {
+      "id": "unrelated-seed-03",
+      "timestamp": "2026-01-15T09:15:00Z",
+      "sequence": 3,
+      "from_account": "operations",
+      "to_account": "rent",
+      "amount_minor": 200000
+    },
+    {
+      "id": "unrelated-seed-04",
+      "timestamp": "2026-01-15T09:20:00Z",
+      "sequence": 4,
+      "from_account": "operations",
+      "to_account": "tax",
+      "amount_minor": 100000
+    },
+    {
+      "id": "unrelated-seed-05",
+      "timestamp": "2026-01-15T09:25:00Z",
+      "sequence": 5,
+      "from_account": "seed-vault",
+      "to_account": "seed-sink",
+      "amount_minor": 250000
+    },
+    {
+      "id": "unrelated-seed-06",
+      "timestamp": "2026-01-15T09:30:00Z",
+      "sequence": 6,
+      "from_account": "payroll",
+      "to_account": "archive",
+      "amount_minor": 100000
+    },
+    {
+      "id": "unrelated-seed-07",
+      "timestamp": "2026-01-15T09:35:00Z",
+      "sequence": 7,
+      "from_account": "rent",
+      "to_account": "archive",
+      "amount_minor": 50000
+    },
+    {
+      "id": "unrelated-seed-08",
+      "timestamp": "2026-01-15T09:40:00Z",
+      "sequence": 8,
+      "from_account": "source",
+      "to_account": "operations",
+      "amount_minor": 200000
+    },
+    {
+      "id": "unrelated-seed-09",
+      "timestamp": "2026-01-15T09:45:00Z",
+      "sequence": 9,
+      "from_account": "operations",
+      "to_account": "payroll",
+      "amount_minor": 100000
+    },
+    {
+      "id": "unrelated-seed-10",
+      "timestamp": "2026-01-15T09:50:00Z",
+      "sequence": 10,
+      "from_account": "payroll",
+      "to_account": "tax",
+      "amount_minor": 50000
+    }
+  ],
+  "seed_transfer_id": "unrelated-seed-01",
+  "target_transfer_ids": [
+    "unrelated-seed-02",
+    "unrelated-seed-06",
+    "unrelated-seed-09"
+  ]
+}

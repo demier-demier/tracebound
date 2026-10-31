@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Tracebound case review: source-bound findings, independent review and a verifiable event history."><title>Tracebound / Case review</title><link rel="stylesheet" href="review.css"></head>
+<body>
+<header><a href="./index.html" class="wordmark">TRACEBOUND<span>CASEWORK</span></a><nav><a href="./index.html">Flow analysis</a><a href="./review.html" aria-current="page">Case review</a><a href="https://github.com/demier-demier/tracebound">Source ↗</a></nav><span id="mode">Recorded synthetic case</span></header>
+<main>
+<aside class="rail"><p class="eyebrow">INVESTIGATIONS</p><div id="case-list"></div><div class="rail-bottom"><b>Review the evidence.</b><p>Every analysis retains its exact source. Every decision is bound to a case revision.</p><span>Local workspace · SQLite</span></div></aside>
+<section class="case-area">
+<div class="case-heading"><div><p class="eyebrow" id="case-id">LOADING CASE</p><h1 id="case-title">Case review</h1><p id="case-description"></p></div><div class="state"><span id="case-status">—</span><small id="case-revision"></small></div></div>
+<div class="notice" id="recording-notice">This is an exported record of an executed local workflow using original synthetic data. Open the flow workbench to recompute the ledger in your browser.</div>
+<div id="message" role="status"></div>
+<div class="case-toolbar"><div><span class="status-light"></span><span id="review-state">Checking evidence…</span></div><button id="export-dossier" disabled>Export dossier ↓</button></div>
+<div class="workspace-grid">
+<section class="evidence-area"><div class="section-head"><h2>Source & analysis</h2><span id="artifact-count">0 exhibits</span></div><div id="artifacts"></div><div class="section-head findings-head"><h2>Computed findings</h2><span>Exact conditional bounds</span></div><div class="table-scroll"><table><thead><tr><th>Target transfer</th><th>Minimum</th><th>Maximum</th></tr></thead><tbody id="findings"></tbody></table></div><p class="scope-note">A positive bound is an allocation constraint, not a finding of criminal activity. Different targets’ maxima may require different allocations.</p><div class="section-head"><h2>Analyst record</h2><span id="note-count"></span></div><div id="notes"></div></section>
+<aside class="timeline-area"><div class="section-head"><h2>Case history</h2><span id="event-count"></span></div><ol id="timeline"></ol><div class="anchor"><p class="eyebrow">EXTERNAL AUDIT ANCHOR</p><code id="anchor-value">—</code><p>Retain this root separately. A hash chain alone cannot prevent an operator from rewriting history.</p><button id="export-anchor" disabled>Save anchor ↓</button></div></aside>
+</div>
+<details class="local-panel" id="local-panel" hidden><summary>Connect to your local case workspace</summary><p>Start the documented loopback server and open this page on that server. Credentials remain in this tab’s memory. Nothing is sent to the public demo.</p><form id="connect-form"><label>Actor token<input id="token" type="password" autocomplete="off" required></label><button>Connect</button><button type="button" id="disconnect">Disconnect</button></form><div id="actor"></div>
+<div id="workspace-controls" hidden>
+<form id="new-case"><h3>Open a case</h3><label>Case ID<input id="new-id" pattern="[A-Za-z0-9_.-]{1,64}" required></label><label>Title<input id="new-title" maxlength="160" required></label><label>Description<textarea id="new-description" maxlength="2000"></textarea></label><button>Create case</button></form>
+<div class="local-columns"><form id="analyze-form"><h3>Import a ledger and analyze</h3><label>Exact flow-case/v1 JSON<textarea id="input-text" rows="8" maxlength="2097152" spellcheck="false" required></textarea></label><label>Or read a local JSON file<input id="input-file" type="file" accept=".json,application/json"></label><button>Analyze & preserve evidence</button></form><div><form id="note-form"><h3>Add an investigator note</h3><label>Observation, basis and uncertainty<textarea id="note-text" maxlength="4000" rows="5" required></textarea></label><button>Save note</button></form><button id="submit-case">Submit for independent review</button><form id="review-form"><h3>Review this revision</h3><label>Decision<select id="review-decision"><option value="return">Return for further work</option><option value="approve">Approve reviewed dossier</option></select></label><label>Reason<textarea id="review-reason" maxlength="2000" required></textarea></label><button>Record review decision</button></form></div></div>
+</div></details>
+<footer>Human review governs the dossier. No account restriction, referral or external report is issued by this software.</footer>
+</section></main><script type="module" src="review.js"></script>
+</body></html>

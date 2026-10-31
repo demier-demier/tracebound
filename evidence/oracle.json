@@ -1,0 +1,23 @@
+{
+  "schema": "tracebound-exhaustive-oracle/v1",
+  "binary_sha256": "43a9fbf5f5a5514dc499711dce51098efaac5da11bfe334ca1eb27705612b7c2",
+  "case_corpus_sha256": "24d6b018f107bad6c4de74e5f70cbf9fb8b557c31c11f98940170972552f378f",
+  "random_seed": 20261031,
+  "systematic_cases_passed": 100,
+  "random_cases_passed": 250,
+  "named_cases_passed": 5,
+  "negative_controls_rejected": 12,
+  "corrupted_evidence_controls_rejected_by_oracle": 2,
+  "incompatible_marginal_witness_control_passed": true,
+  "target_intervals_checked": 1710,
+  "extremal_witnesses_replayed": 3420,
+  "maximum_reachable_allocation_states": 9,
+  "elapsed_seconds": 1.373356,
+  "scope": "Exact enumeration of reachable integer account-color states on tiny synthetic ledgers; independent direct balance replay of every extremal witness. No graph or solver implementation reused.",
+  "limitations": [
+    "This is a reproducible finite validation corpus, not a proof for every ledger size or every input.",
+    "Completeness and trusted posting order are model assumptions, not established by this oracle.",
+    "Intervals are marginal feasible allocations, not probabilities, actual money provenance or evidence of a crime.",
+    "Runtime includes process startup and JSON I/O; it is not a solver throughput benchmark."
+  ]
+}

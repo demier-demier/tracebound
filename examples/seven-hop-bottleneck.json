@@ -1,0 +1,162 @@
+{
+  "schema": "flow-case/v1",
+  "case_id": "seven-hop-bottleneck",
+  "currency": "EUR",
+  "completeness_attested": true,
+  "opening_balances": [
+    {
+      "account": "source",
+      "amount_minor": 1200000
+    },
+    {
+      "account": "collector",
+      "amount_minor": 300000
+    },
+    {
+      "account": "relay-a",
+      "amount_minor": 0
+    },
+    {
+      "account": "relay-b",
+      "amount_minor": 0
+    },
+    {
+      "account": "liquidity-pool",
+      "amount_minor": 200000
+    },
+    {
+      "account": "clearing",
+      "amount_minor": 0
+    },
+    {
+      "account": "receiver",
+      "amount_minor": 0
+    },
+    {
+      "account": "reserve",
+      "amount_minor": 0
+    }
+  ],
+  "closing_balances": [
+    {
+      "account": "source",
+      "amount_minor": 400000
+    },
+    {
+      "account": "collector",
+      "amount_minor": 100000
+    },
+    {
+      "account": "relay-a",
+      "amount_minor": 100000
+    },
+    {
+      "account": "relay-b",
+      "amount_minor": 100000
+    },
+    {
+      "account": "liquidity-pool",
+      "amount_minor": 200000
+    },
+    {
+      "account": "clearing",
+      "amount_minor": 50000
+    },
+    {
+      "account": "receiver",
+      "amount_minor": 200000
+    },
+    {
+      "account": "reserve",
+      "amount_minor": 550000
+    }
+  ],
+  "transfers": [
+    {
+      "id": "seven-hop-bottleneck-01",
+      "timestamp": "2026-01-15T09:05:00Z",
+      "sequence": 1,
+      "from_account": "source",
+      "to_account": "collector",
+      "amount_minor": 900000
+    },
+    {
+      "id": "seven-hop-bottleneck-02",
+      "timestamp": "2026-01-15T09:10:00Z",
+      "sequence": 2,
+      "from_account": "collector",
+      "to_account": "relay-a",
+      "amount_minor": 1100000
+    },
+    {
+      "id": "seven-hop-bottleneck-03",
+      "timestamp": "2026-01-15T09:15:00Z",
+      "sequence": 3,
+      "from_account": "relay-a",
+      "to_account": "relay-b",
+      "amount_minor": 1000000
+    },
+    {
+      "id": "seven-hop-bottleneck-04",
+      "timestamp": "2026-01-15T09:20:00Z",
+      "sequence": 4,
+      "from_account": "relay-b",
+      "to_account": "liquidity-pool",
+      "amount_minor": 900000
+    },
+    {
+      "id": "seven-hop-bottleneck-05",
+      "timestamp": "2026-01-15T09:25:00Z",
+      "sequence": 5,
+      "from_account": "liquidity-pool",
+      "to_account": "clearing",
+      "amount_minor": 1000000
+    },
+    {
+      "id": "seven-hop-bottleneck-06",
+      "timestamp": "2026-01-15T09:30:00Z",
+      "sequence": 6,
+      "from_account": "clearing",
+      "to_account": "receiver",
+      "amount_minor": 950000
+    },
+    {
+      "id": "seven-hop-bottleneck-07",
+      "timestamp": "2026-01-15T09:35:00Z",
+      "sequence": 7,
+      "from_account": "receiver",
+      "to_account": "reserve",
+      "amount_minor": 850000
+    },
+    {
+      "id": "seven-hop-bottleneck-08",
+      "timestamp": "2026-01-15T09:40:00Z",
+      "sequence": 8,
+      "from_account": "reserve",
+      "to_account": "source",
+      "amount_minor": 100000
+    },
+    {
+      "id": "seven-hop-bottleneck-09",
+      "timestamp": "2026-01-15T09:45:00Z",
+      "sequence": 9,
+      "from_account": "reserve",
+      "to_account": "liquidity-pool",
+      "amount_minor": 200000
+    },
+    {
+      "id": "seven-hop-bottleneck-10",
+      "timestamp": "2026-01-15T09:50:00Z",
+      "sequence": 10,
+      "from_account": "liquidity-pool",
+      "to_account": "receiver",
+      "amount_minor": 100000
+    }
+  ],
+  "seed_transfer_id": "seven-hop-bottleneck-01",
+  "target_transfer_ids": [
+    "seven-hop-bottleneck-07",
+    "seven-hop-bottleneck-09",
+    "seven-hop-bottleneck-10"
+  ]
+}

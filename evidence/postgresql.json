@@ -1,0 +1,57 @@
+{
+  "schema": "tracebound-postgresql-snapshot-lab/v1",
+  "postgres_version": "postgres (PostgreSQL) 15.17 (Homebrew)",
+  "binary_sha256": "43a9fbf5f5a5514dc499711dce51098efaac5da11bfe334ca1eb27705612b7c2",
+  "source_case_sha256": "7e37c727fa937a9785166d6ae750cf1bf28e93370b67d9ad186375396e0f07cb",
+  "exported_case_sha256": "421f4679e27fdc0504e49bcfd3cf79d4915148a73ab52295398e834d000ae974",
+  "snapshot_report_sha256": "a0781789aa9bf654d8b57ba72f7a8b878c5e5113ac7c9d953f74610439331a50",
+  "case_id": "split-merge-cycle",
+  "accounts": 8,
+  "transfers": 14,
+  "target_count": 4,
+  "normalized_values_preserved": true,
+  "target_reports_including_witnesses_identical": true,
+  "snapshot_observations": {
+    "isolation": "repeatable read",
+    "read_only": true,
+    "reader_has_update_privilege": false,
+    "snapshot_stable_across_queries": true,
+    "concurrent_commit_hidden_from_snapshot": true,
+    "concurrent_commit_visible_to_new_transaction": true,
+    "read_only_write_rejected_sqlstate": "25006"
+  },
+  "tcp_listen_addresses_empty": true,
+  "ambient_pg_variables_ignored": 6,
+  "targets": [
+    {
+      "transfer_id": "split-merge-cycle-06",
+      "minimum_minor": "200000",
+      "maximum_minor": "600000"
+    },
+    {
+      "transfer_id": "split-merge-cycle-08",
+      "minimum_minor": "0",
+      "maximum_minor": "300000"
+    },
+    {
+      "transfer_id": "split-merge-cycle-10",
+      "minimum_minor": "0",
+      "maximum_minor": "500000"
+    },
+    {
+      "transfer_id": "split-merge-cycle-14",
+      "minimum_minor": "0",
+      "maximum_minor": "60000"
+    }
+  ],
+  "scope": "Real isolated local PostgreSQL with normalized tables and a repeatable-read read-only export of a supplied synthetic case. No existing database was contacted.",
+  "limitations": [
+    "This is a reproducible local integration lab, not a production connector, CDC pipeline or deployment validation.",
+    "One MVCC snapshot prevents inter-query visibility drift; it does not prove ledger completeness, truthful source data or trusted posting sequence.",
+    "PostgreSQL timestamps use microsecond precision. This lab rejects meaningful sub-microsecond values and leap-second timestamps instead of silently changing them.",
+    "The model requires one currency, explicit funded postings and matching account openings/closings. Bank-specific normalization and authorization remain outside this fixture."
+  ],
+  "cluster_stopped": true,
+  "temporary_cluster_removed": true,
+  "elapsed_seconds": 0.838666
+}
